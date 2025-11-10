@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Your Name — Academic Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Academic portfolio, CV, coursework, projects, and essays.">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">Your Name</a>
+    <nav class="nav">
+      <a href="cv.html">CV</a>
+      <a href="coursework.html">Coursework</a>
+      <a href="projects.html">Side Projects</a>
+      <a href="essays.html">Essays</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <img src="assets/profile.jpg" alt="Profile photo" class="hero-img">
+      <div>
+        <h1>Hello, I’m Your Name</h1>
+        <p>I’m an aspiring academic focusing on [fields/interests]. I use this site to share my CV, coursework, side projects, and essays.</p>
+        <p><strong>Research interests:</strong> Topic A, Topic B, Method C</p>
+        <p><strong>Contact:</strong> your.email@example.com · <a href="https://linkedin.com/in/yourprofile">LinkedIn</a> · <a href="https://github.com/yourusername">GitHub</a></p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Highlights</h2>
+      <ul class="cards">
+        <li class="card">
+          <h3>Latest essay</h3>
+          <p>Title of essay or reflection — brief summary of the argument and contribution.</p>
+          <a class="btn" href="essays.html">Read</a>
+        </li>
+        <li class="card">
+          <h3>Featured project</h3>
+          <p>Short description with methods (e.g., R, Quarto) and what you found.</p>
+          <a class="btn" href="projects.html">Explore</a>
+        </li>
+        <li class="card">
+          <h3>Coursework sample</h3>
+          <p>One sentence about a strong assignment or research paper.</p>
+          <a class="btn" href="coursework.html">View</a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>© <span id="year"></span> Your Name. Built with GitHub Pages.</small>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
