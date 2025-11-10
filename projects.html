@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Side Projects — Your Name</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">Your Name</a>
+    <nav class="nav">
+      <a href="cv.html">CV</a>
+      <a href="coursework.html">Coursework</a>
+      <a href="projects.html" aria-current="page">Side Projects</a>
+      <a href="essays.html">Essays</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Side Projects</h1>
+    <p>Independent projects, experiments, and prototypes.</p>
+
+    <article class="entry">
+      <h2>Project Title</h2>
+      <p><strong>Summary:</strong> What you built and why it matters.</p>
+      <p><strong>Stack:</strong> R, Quarto, ggplot2.</p>
+      <p><a href="https://github.com/yourusername/project-repo">GitHub Repo</a> · <a href="https://yourusername.github.io/project-report.html">Live Report</a></p>
+    </article>
+
+    <article class="entry">
+      <h2>Interactive Shiny app</h2>
+      <p><strong>Summary:</strong> Brief description.</p>
+      <p><a href="https://yourshinyappurl.example">Launch App</a> · <a href="https://github.com/yourusername/shiny-repo">Code</a></p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <small>© <span id="year"></span> Your Name.</small>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
