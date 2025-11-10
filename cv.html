@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CV — Your Name</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">Your Name</a>
+    <nav class="nav">
+      <a href="cv.html" aria-current="page">CV</a>
+      <a href="coursework.html">Coursework</a>
+      <a href="projects.html">Side Projects</a>
+      <a href="essays.html">Essays</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Curriculum Vitae</h1>
+
+    <p><a class="btn" href="assets/YourName_CV.pdf">Download PDF</a></p>
+
+    <h2>Education</h2>
+    <ul>
+      <li><strong>Degree, Institution</strong> — Year–Year. Thesis: “Title”. Advisors: Name.</li>
+    </ul>
+
+    <h2>Experience</h2>
+    <ul>
+      <li><strong>Role, Organization</strong> — Year–Year. One‑line impact or methods used.</li>
+    </ul>
+
+    <h2>Skills</h2>
+    <ul>
+      <li><strong>Methods:</strong> R, Quarto, statistical modeling, data visualization</li>
+      <li><strong>Languages:</strong> English, French</li>
+    </ul>
+
+    <h2>Publications & working papers</h2>
+    <ul>
+      <li><strong>Working paper:</strong> Title (link to PDF or GitHub repo)</li>
+    </ul>
+  </main>
+
+  <footer class="site-footer">
+    <small>© <span id="year"></span> Your Name.</small>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
