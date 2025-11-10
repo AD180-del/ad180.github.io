@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Coursework — Your Name</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">Your Name</a>
+    <nav class="nav">
+      <a href="cv.html">CV</a>
+      <a href="coursework.html" aria-current="page">Coursework</a>
+      <a href="projects.html">Side Projects</a>
+      <a href="essays.html">Essays</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Coursework</h1>
+    <p>Selected courses, assignments, and research papers.</p>
+
+    <article class="entry">
+      <h2>Course Title (Institution, Year)</h2>
+      <p><strong>Focus:</strong> Methods/topics covered. <strong>Deliverable:</strong> Short description.</p>
+      <p><a href="assets/coursework/Assignment1.pdf">Assignment PDF</a> · <a href="https://github.com/yourusername/coursework-repo">Code/Repo</a></p>
+    </article>
+
+    <article class="entry">
+      <h2>Course Title 2</h2>
+      <p><strong>Focus:</strong> … <strong>Deliverable:</strong> …</p>
+      <p><a href="assets/coursework/Paper.pdf">Paper PDF</a></p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <small>© <span id="year"></span> Your Name.</small>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
