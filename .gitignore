@@ -1,0 +1,25 @@
+# R history and session files
+.Rhistory
+.RData
+.Rproj.user/
+
+# RStudio project files
+*.Rproj
+
+# Temporary files
+*.tmp
+*.swp
+
+# Output files
+*.html
+*.pdf
+*.docx
+
+# Data files (large or sensitive)
+*.csv
+*.tsv
+*.xlsx
+
+# OS-specific files
+.DS_Store
+Thumbs.db
