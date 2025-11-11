@@ -6,6 +6,17 @@
   --border: #e5e7eb;
   --card: #f9fafb;
 }
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1f2937;       /* dark background */
+    --text: #f9fafb;     /* light text */
+    --muted: #9ca3af;    /* softer gray */
+    --brand: #14b8a6;    /* teal accent */
+    --border: #374151;   /* darker border */
+    --card: #111827;     /* card background */
+  }
+}
 
 * { box-sizing: border-box; }
 
