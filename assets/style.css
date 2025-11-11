@@ -1,5 +1,6 @@
 :root {
   --bg: #ffffff;
+  --header-bg: #f9fafb;
   --text: #1f2937;
   --muted: #6b7280;
   --brand: #0f766e;
@@ -11,6 +12,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #1f2937;
+    --header-bg: #111827;
     --text: #f9fafb;
     --muted: #9ca3af;
     --brand: #14b8a6;
@@ -40,7 +42,7 @@ a:hover { text-decoration: underline; }
 
 .site-header, .site-footer {
   border-bottom: 1px solid var(--border);
-  background: #fff;
+  background: var(--bg);
 }
 
 .site-footer {
