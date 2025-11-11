@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="index.html">Your Name</a>
+  <header class="site-header" role="banner">
+    <a class="brand" href="index.html">AD</a>
     <nav class="nav">
       <a href="cv.html">CV</a>
       <a href="coursework.html">Coursework</a>
@@ -20,17 +20,21 @@
 
   <main class="container">
     <section class="hero">
-<!--  <img src="assets/profile.jpg" alt="Profile photo" class="hero-img"> -->
-      <div>
+      <!-- Uncomment when image is available -->
+      <!-- <img src="assets/profile.jpg" alt="Profile photo" class="hero-img"> -->
+      <div class="hero-text">
         <h1>Hello, I’m AD</h1>
         <p>I’m an aspiring academic focusing on international relations, comparative politics, & media studies. I use this site to share my CV, coursework, side projects, and essays.</p>
-        <p><strong>Research interests:</strong>  Information politics and disinformation; democratic resilience and hybrid threats; securitisation
- and framing theory; East Asia (China–Taiwan) in comparative perspective with Europe; STS. </p>
-        <p><strong>Contact:</strong> your.email@example.com · <a href="https://linkedin.com/in/yourprofile">LinkedIn</a> · <a href="https://github.com/yourusername">GitHub</a></p>
+        <p><strong>Research interests:</strong> Information politics and disinformation; democratic resilience and hybrid threats; securitisation and framing theory; East Asia (China–Taiwan) in comparative perspective with Europe; STS.</p>
+        <p><strong>Contact:</strong> 
+          <a href="mailto:your.email@example.com">your.email@example.com</a> · 
+          <a href="https://linkedin.com/in/yourprofile">LinkedIn</a> · 
+          <a href="https://github.com/yourusername">GitHub</a>
+        </p>
       </div>
     </section>
 
-    <section>
+    <section class="highlights">
       <h2>Highlights</h2>
       <ul class="cards">
         <li class="card">
@@ -52,8 +56,8 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <small>© <span id="year"></span> Your Name. Built with GitHub Pages.</small>
+  <footer class="site-footer" role="contentinfo">
+    <small>© <span id="year"></span> AD. Built with GitHub Pages.</small>
   </footer>
 
   <script>
