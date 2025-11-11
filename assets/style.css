@@ -125,6 +125,16 @@ h3 { font-size: 1.05rem; margin: 0.75rem 0 0.25rem; }
 }
 .entry:last-child { border-bottom: none; }
 
+.collection {
+  margin-bottom: 2rem;
+}
+
+.collection h2 {
+  border-left: 4px solid var(--brand);
+  padding-left: 0.5rem;
+  margin-bottom: 1rem;
+}
+
 .btn {
   display: inline-block;
   background: var(--brand);
