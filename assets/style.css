@@ -156,3 +156,13 @@ h3 { font-size: 1.05rem; margin: 0.75rem 0 0.25rem; }
   margin-top: 0.5rem;
 }
 .btn:hover { opacity: 0.92; }
+
+.toggle-details {
+  margin: 0.5rem 0;
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  cursor: pointer;
+  font-size: 0.95rem;
+}
