@@ -26,15 +26,33 @@
     <article class="card">
       <h2>Asian Regionalism (National Taiwan University, 2025)</h2>
       <p>
-        <strong>Focus:</strong> Comparative analysis of Asian legal regionalism, with emphasis on sovereignty, soft law, and the absence of supranational courts. Case studies include ASEAN, SAARC, and transregional initiatives such as APPIL and ARMO.
+        <strong>Focus:</strong> Comparative analysis of Asian legal regionalism, with emphasis on sovereignty, soft law, and the absence of supranational courts. 
+        <span class="more-focus"
+          style="display:none;">
+        Case studies include ASEAN, SAARC, and transregional initiatives such as APPIL and ARMO.
       </p>
-      <p>
-        <strong>Methods:</strong> Literature review of academic sources; conceptual framework drawing on theories of regionalism and transregionalism; comparative case study analysis (ASEAN vs. ECOWAS/MERCOSUR); document analysis of charters, declarations, and arbitration rulings.
-      </p>
-      <p>
-        <strong>Deliverable:</strong> Seminar paper providing a critical description of Asia’s judicial regionalism and its obstacles.
+    </span>
       </p>
       <p><a href="assets/coursework/ASREG - Copy.pdf">Paper PDF</a></p>
+      <button class="toggle-details">Show Details</button>
+      <div class="card-details"
+        style="display:none;">
+      <p>
+        <strong>Focus (continued): </strong> 
+        <span>
+          Case studies include ASEAN, SAARC, and transregional initiatives such as APPIL and ARMO.
+        </span>
+        <\p>
+        <p>
+          <strong>Methods:</strong> Literature review of academic sources; conceptual framework drawing on theories of regionalism and transregionalism; comparative case study analysis (ASEAN vs. ECOWAS/MERCOSUR); document analysis of charters, declarations, and arbitration rulings.
+        </p>
+         <p>
+        <strong>Methods:</strong> Literature review of academic sources; conceptual framework drawing on theories of regionalism and transregionalism; comparative case study analysis (ASEAN vs. ECOWAS/MERCOSUR); document analysis of charters, declarations, and arbitration rulings. </p>
+      <p class="expanded-pdf-link"
+        style="display:none;">
+        <a href="assets/coursework/ASREG - Copy.pdf">Paper PDF</a>
+      </p>
+      </div>
     </article>
     
     <article class="card">
@@ -76,5 +94,31 @@
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+document.querySelectorAll('.toggle-details').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var card = btn.closest('.card');
+    var details = card.querySelector('.card-details');
+    var moreFocus = card.querySelector('.more-focus');
+    var pdfBefore = card.querySelector('a[href*="Paper PDF"]');
+    var pdfExpanded = card.querySelector('.expanded-pdf-link');
+
+    if (details.style.display === "none") {
+      details.style.display = "block";
+      btn.textContent = "Hide Details";
+      if (moreFocus) moreFocus.style.display = "inline";
+      if (pdfBefore) pdfBefore.parentElement.style.display = "none";
+      if (pdfExpanded) pdfExpanded.style.display = "block";
+    } else {
+      details.style.display = "none";
+      btn.textContent = "Show Details";
+      if (moreFocus) moreFocus.style.display = "none";
+      if (pdfBefore) pdfBefore.parentElement.style.display = "block";
+      if (pdfExpanded) pdfExpanded.style.display = "none";
+    }
+  });
+});
+</script>
+
 </body>
 </html>
