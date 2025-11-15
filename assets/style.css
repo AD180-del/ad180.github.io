@@ -6,6 +6,9 @@
   --brand: #0f766e;
   --border: #e5e7eb;
   --card: #f9fafb;
+  /* Add these lines: */
+  --primary: #0f766e;        /* or any color with contrast against white */
+  --primary-text: #ffffff;   /* white text over colored button */
 }
 
 /* Dark mode overrides */
@@ -18,8 +21,12 @@
     --brand: #14b8a6;
     --border: #374151;
     --card: #111827;
+    /* Add these lines: */
+    --primary: #14b8a6;      /* or pick something with contrast vs dark */
+    --primary-text: #ffffff; /* white text over colored button */
   }
 }
+
 
 * { box-sizing: border-box; }
 
