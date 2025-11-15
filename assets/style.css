@@ -6,9 +6,9 @@
   --brand: #0f766e;
   --border: #e5e7eb;
   --card: #f9fafb;
-  /* Add these lines: */
   --primary: #0f766e;        /* or any color with contrast against white */
   --primary-text: #ffffff;   /* white text over colored button */
+  --primary-dark: #0c6082; 
 }
 
 /* Dark mode overrides */
@@ -148,23 +148,6 @@ h3 { font-size: 1.05rem; margin: 0.75rem 0 0.25rem; }
   from { opacity: 0; }
   to { opacity: 1; }
 }
-
-.toggle-details {
-  margin-top: 0.5rem;
-  padding: 0.4rem 1rem;
-  border: none;
-  border-radius: 4px;
-  background-color: #1696d2;
-  color: #fff;
-  cursor: pointer;
-  transition: background 0.15s;
-}
-.toggle-details:hover {
-  background: #0c6082;
-}
-
-
-
 
 .entry {
   border-bottom: 1px solid var(--border);
