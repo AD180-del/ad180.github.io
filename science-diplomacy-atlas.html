@@ -253,26 +253,26 @@ function displayResults(data) {
   const resultsDiv = document.getElementById('results');
   
   if (data.length === 0) {
-    resultsDiv.innerHTML = '<div class="card"><p>No collaborations match these filters. Try different options!</p></div>';
+    resultsDiv.innerHTML = '<div class="atlas-card"><p>No collaborations match these filters. Try different options!</p></div>';
     return;
   }
   
   resultsDiv.innerHTML = data.map(item => `
-    <div class="card">
+    <div class="atlas-card">
       <h3>${item.title}</h3>
-      <div class="meta">
+      <div class="atlas-meta">
         <span class="field">${item.field}</span>
         <span class="type">${item.type.toUpperCase()} • ${item.year}</span>
-        <span>${item.country_pair}</span>
+        <span class="country">${item.country_pair}</span>
       </div>
-      <p class="note">${item.note}</p>
-      <p class="source">
+      <p class="atlas-note">${item.note}</p>
+      <p class="atlas-source">
         <a href="${item.source}" target="_blank">Source ↗</a>
       </p>
     </div>
   `).join('');
 }
-
+  
 // INITIALIZE - 
 updateFilters();
 document.getElementById('countryFilter').addEventListener('change', filterData);
@@ -436,7 +436,16 @@ filterData();
     font-weight: 500; 
     border: 1px solid #86efac;
   }
-  
+
+  .atlas-meta .country { 
+  background: linear-gradient(135deg, #fef3c7, #fde68a); 
+  color: #92400e; 
+  padding: 0.375rem 0.75rem; 
+  border-radius: 9999px; 
+  font-weight: 500; 
+  border: 1px solid #fcd34d;
+}
+    
   .atlas-meta span:not(.field):not(.type) { 
     background: linear-gradient(135deg, #fef3c7, #fde68a); 
     color: #92400e; 
