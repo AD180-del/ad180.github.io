@@ -351,7 +351,7 @@ filterData();
   </script>
 
   <!-- ATLAS-SPECIFIC CSS (add to your assets/style.css) -->
-  <style>
+<style>
   .atlas-filters { 
     display: flex; 
     justify-content: center; 
@@ -418,41 +418,32 @@ filterData();
     font-size: 0.875rem;
   }
   
-  /* COLOR-CODED TAGS */
-  .atlas-meta .field { 
-    background: linear-gradient(135deg, #dbeafe, #bfdbfe); 
-    color: #1e40af; 
-    padding: 0.375rem 0.75rem; 
-    border-radius: 9999px; 
-    font-weight: 500; 
-    border: 1px solid #93c5fd;
+  /* SPECIFICITY FIXED - Order matters! */
+  .atlas-meta span.type {
+    background: linear-gradient(135deg, #d1fae5, #a7f3d0) !important; 
+    color: #065f46 !important; 
+    padding: 0.375rem 0.75rem !important; 
+    border-radius: 9999px !important; 
+    font-weight: 500 !important; 
+    border: 1px solid #86efac !important;
   }
   
-  .atlas-meta span.type { 
-    background: linear-gradient(135deg, #d1fae5, #a7f3d0); 
-    color: #065f46; 
-    padding: 0.375rem 0.75rem; 
-    border-radius: 9999px; 
-    font-weight: 500; 
-    border: 1px solid #86efac;
+  .atlas-meta span.country {
+    background: linear-gradient(135deg, #fef3c7, #fde68a) !important; 
+    color: #92400e !important; 
+    padding: 0.375rem 0.75rem !important; 
+    border-radius: 9999px !important; 
+    font-weight: 500 !important; 
+    border: 1px solid #fcd34d !important;
   }
-
-  .atlas-meta .country { 
-  background: linear-gradient(135deg, #fef3c7, #fde68a); 
-  color: #92400e; 
-  padding: 0.375rem 0.75rem; 
-  border-radius: 9999px; 
-  font-weight: 500; 
-  border: 1px solid #fcd34d;
-}
-    
-  .atlas-meta span:not(.field):not(.type) { 
-    background: linear-gradient(135deg, #fef3c7, #fde68a); 
-    color: #92400e; 
-    padding: 0.375rem 0.75rem; 
-    border-radius: 9999px; 
-    font-weight: 500; 
-    border: 1px solid #fcd34d;
+  
+  .atlas-meta span.field {
+    background: linear-gradient(135deg, #dbeafe, #bfdbfe) !important; 
+    color: #1e40af !important; 
+    padding: 0.375rem 0.75rem !important; 
+    border-radius: 9999px !important; 
+    font-weight: 500 !important; 
+    border: 1px solid #93c5fd !important;
   }
   
   .atlas-note { 
