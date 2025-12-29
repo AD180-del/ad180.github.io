@@ -2,30 +2,368 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Science Diplomacy Mini-Atlas — Your Name</title>
+  <title>Science Diplomacy Mini-Atlas — AD</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css"> <!-- Your existing styles -->
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <!-- Your existing header/nav -->
-  <header class="site-header">...</header>
+  <!-- YOUR EXISTING HEADER/NAV -->
+  <header class="site-header">
+    <a class="brand" href="index.html">AD</a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="cv.html">CV</a>
+      <a href="coursework.html">Coursework</a>
+      <a href="projects.html">Projects</a>
+      <a href="essays.html">Essays</a>
+    </nav>
+  </header>
 
   <main class="container">
+    <!-- PAGE HEADER - Matches your portfolio style -->
     <header class="page-header">
       <h1>🌍 Science Diplomacy Mini-Atlas</h1>
-      <p>Europe ↔ East Asia science collaborations (1991-2025)<br>17 verified initiatives across AI, climate, space, health</p>
+      <p>Interactive database of 17 verified Europe ↔ East Asia science collaborations (1991-2025). Filter by country pair, field, and year.</p>
     </header>
 
-    <!-- COMPLETE ATLAS (filters + results) from CodePen HTML -->
-    <div class="filters">...</div>
-    <div id="results" class="results">...</div>
+    <!-- ATLAS FILTERS -->
+    <div class="atlas-filters">
+      <label>Country Pair:</label>
+      <select id="countryFilter">
+        <option value="">All</option>
+      </select>
+
+      <label>Field:</label>
+      <select id="fieldFilter">
+        <option value="">All</option>
+      </select>
+
+      <label>Year:</label>
+      <select id="yearFilter">
+        <option value="">All</option>
+      </select>
+    </div>
+
+    <!-- ATLAS RESULTS -->
+    <div id="results" class="atlas-results">
+      <!-- Cards will appear here -->
+    </div>
   </main>
 
-  <!-- Your existing footer -->
-  <footer class="site-footer">...</footer>
+  <!-- YOUR EXISTING FOOTER -->
+  <footer class="site-footer">
+    <small>© <span id="year"></span> AD.</small>
+  </footer>
 
-  <!-- COMPLETE JS with diplomacyData -->
-  <script>...</script>
+  <!-- COMPLETE ATLAS JAVASCRIPT -->
+  <script>
+    // DATASET - Verified Europe ↔ East Asia collaborations
+const diplomacyData = [
+  {
+    country_pair: "EU–Japan",
+    field: "Space",
+    type: "Joint Mission",
+    title: "BepiColombo",
+    year: 2018,
+    note: "Joint ESA-JAXA mission to Mercury; comprising two orbiters (MPO & Mio) launched together.",
+    source: "https://www.esa.int/Science_Exploration/Space_Science/BepiColombo"
+  },
+  {
+    country_pair: "EU–Japan",
+    field: "Climate",
+    type: "Policy",
+    title: "EU–Japan Green Alliance",
+    year: 2021,
+    note: "The first-ever 'Green Alliance' for the EU, focusing on hydrogen, off-shore wind, and green tech standards.",
+    source: "https://ec.europa.eu/commission/presscorner/detail/en/IP_21_2685"
+  },
+  {
+    country_pair: "Germany–China",
+    field: "General Science",
+    type: "Funding Body",
+    title: "Sino-German Center (SGC)",
+    year: 2000,
+    note: "Joint venture by DFG and NSFC based in Beijing to fund bilateral workshops and study groups.",
+    source: "https://www.dfg.de/en/research_funding/international_cooperation/international_cooperation/china/sgc/index.html"
+  },
+  {
+    country_pair: "EU–South Korea",
+    field: "Innovation",
+    type: "Agreement",
+    title: "Horizon Europe Association",
+    year: 2025,
+    note: "South Korea officially joined Horizon Europe (Pillar II) as an associated country, enabling equal funding access.",
+    source: "https://research-and-innovation.ec.europa.eu/news/all-research-and-innovation-news/republic-korea-join-horizon-europe-2024-03-25_en"
+  },
+  {
+    country_pair: "EU–China",
+    field: "Earth Science",
+    type: "Research Network",
+    title: "Dragon Programme",
+    year: 2004,
+    note: "Longest running ESA-NRSCC cooperation using satellite data for climate, agriculture, and disaster monitoring.",
+    source: "https://dragon5.esa.int/"
+  },
+  {
+    country_pair: "Germany–South Korea",
+    field: "Tech / Energy",
+    type: "Infrastructure",
+    title: "Fraunhofer–KIAT Coordination Hub",
+    year: 2024,
+    note: "A platform connecting German institutes with Korean industry for R&D in semiconductors and batteries.",
+    source: "https://www.fraunhofer.de/en/press/research-news/2024/april-2024/fraunhofer-to-expand-its-collaboration-with-south-korea.html"
+  },
+  {
+    country_pair: "EU–East Asia",
+    field: "Energy",
+    type: "Infrastructure",
+    title: "ITER",
+    year: 2006,
+    note: "The massive fusion reactor hosted in France. China, Japan, and Korea are key 'Domestic Agencies' supplying components.",
+    source: "https://www.iter.org/proj/inafewlines"
+  },
+  {
+    country_pair: "EU–Japan",
+    field: "General Science",
+    type: "Funding",
+    title: "EIG CONCERT-Japan",
+    year: 2014,
+    note: "An 'Interest Group' of European agencies and JST (Japan) that pools money for joint research calls.",
+    source: "http://concert-japan.eu/"
+  },
+  {
+    country_pair: "EU–Japan",
+    field: "Climate",
+    type: "Joint Mission",
+    title: "EarthCARE",
+    year: 2024,
+    note: "'White Dragon' satellite mission (ESA/JAXA) to study clouds and aerosols; launched in May 2024.",
+    source: "https://www.esa.int/Applications/Observing_the_Earth/Future_EO/EarthCARE"
+  },
+  {
+    country_pair: "Germany–South Korea",
+    field: "Digital / AI",
+    type: "Policy",
+    title: "Germany–Korea Digital Dialogue",
+    year: 2022,
+    note: "High-level government channel to align standards on 6G, AI regulation, and data flows.",
+    source: "https://www.bmwk.de/Redaktion/EN/Pressemitteilungen/2022/09/20220905-first-german-korean-digital-dialogue.html"
+  },
+  {
+    country_pair: "France–South Korea",
+    field: "Health",
+    type: "Joint Institute",
+    title: "Institut Pasteur Korea",
+    year: 2004,
+    note: "An independent institute in Pangyo, Gyeonggi-do, focusing on infectious diseases and discovery biology.",
+    source: "https://www.ip-korea.org/"
+  },
+  {
+    country_pair: "France–China",
+    field: "Physics / Math",
+    type: "Exchange",
+    title: "CSC–IP Paris Program",
+    year: 2021,
+    note: "Scholarship agreement for Chinese PhD students to study at Institut Polytechnique de Paris.",
+    source: "https://www.ip-paris.fr/en/education/international/cooperation-china"
+  },
+  {
+    country_pair: "EU–China",
+    field: "Agriculture",
+    type: "Funding",
+    title: "EU–China Co-funding Mechanism",
+    year: 2021,
+    note: "Mechanism where China's MOST matches funding for Chinese partners in Horizon Europe 'Food & Bioeconomy' calls.",
+    source: "https://research-and-innovation.ec.europa.eu/strategy/strategy-research-and-innovation/europe-world/international-cooperation/bilateral-cooperation-science-and-technology-agreements-non-eu-countries/china_en"
+  },
+  {
+    country_pair: "Germany–South Korea",
+    field: "Energy",
+    type: "Joint Lab / Project",
+    title: "H2Safe Collaboration",
+    year: 2025,
+    note: "Collaboration between BAM (Germany) and KICT (Korea) on safety standards for hydrogen infrastructure.",
+    source: "https://www.bam.de/Content/EN/Press-Releases/2025/Energy/2025-08-28-hydrogen-bam-kict-german-korean-partnership.html"
+  },
+  {
+    country_pair: "France–China",
+    field: "Social Science",
+    type: "Institute",
+    title: "CEFC",
+    year: 1991,
+    note: "The French Centre for Research on Contemporary China (Hong Kong/Taipei) studying political/social trends.",
+    source: "https://www.cefc.com.hk/about-us/"
+  },
+  {
+    country_pair: "France–Japan",
+    field: "Robotics",
+    type: "Joint Lab",
+    title: "CNRS–AIST JRL",
+    year: 2004,
+    note: "The Joint Robotics Laboratory in Tsukuba, famous for humanoid robotics research.",
+    source: "https://unit.aist.go.jp/jrl-22022/index_en.html"
+  },
+  {
+    country_pair: "EU–Japan",
+    field: "Innovation",
+    type: "Agreement",
+    title: "Horizon Europe Association",
+    year: 2025,
+    note: "Japan concluded negotiations to associate with Horizon Europe; transitional arrangements start 2026.",
+    source: "https://ec.europa.eu/commission/presscorner/detail/en/IP_24_6755"
+  }
+];
+
+// FIXED FUNCTIONS 
+function updateFilters() {
+  const countryFilter = document.getElementById('countryFilter');
+  const fieldFilter = document.getElementById('fieldFilter');
+  const yearFilter = document.getElementById('yearFilter');
+  
+  const countries = [...new Set(diplomacyData.map(d => d.country_pair))].sort();
+  const fields = [...new Set(diplomacyData.map(d => d.field))].sort();
+  const years = [...new Set(diplomacyData.map(d => d.year))].sort((a,b)=>b-a);
+  
+  countryFilter.innerHTML = '<option value="">All</option>' + 
+    countries.map(c => `<option value="${c}">${c}</option>`).join('');
+    
+  fieldFilter.innerHTML = '<option value="">All</option>' + 
+    fields.map(f => `<option value="${f}">${f}</option>`).join('');
+    
+  yearFilter.innerHTML = '<option value="">All</option>' + 
+    years.map(y => `<option value="${y}">${y}</option>`).join('');
+}
+
+function filterData() {
+  const countryFilter = document.getElementById('countryFilter').value;
+  const fieldFilter = document.getElementById('fieldFilter').value;
+  const yearFilter = document.getElementById('yearFilter').value;
+  
+  const filtered = diplomacyData.filter(item => {
+    return (!countryFilter || item.country_pair === countryFilter) &&
+           (!fieldFilter || item.field === fieldFilter) &&
+           (!yearFilter || item.year == yearFilter);
+  });
+  
+  displayResults(filtered);
+}
+
+function displayResults(data) {
+  const resultsDiv = document.getElementById('results');
+  
+  if (data.length === 0) {
+    resultsDiv.innerHTML = '<div class="card"><p>No collaborations match these filters. Try different options!</p></div>';
+    return;
+  }
+  
+  resultsDiv.innerHTML = data.map(item => `
+    <div class="card">
+      <h3>${item.title}</h3>
+      <div class="meta">
+        <span class="field">${item.field}</span>
+        <span class="type">${item.type.toUpperCase()} • ${item.year}</span>
+        <span>${item.country_pair}</span>
+      </div>
+      <p class="note">${item.note}</p>
+      <p class="source">
+        <a href="${item.source}" target="_blank">Source ↗</a>
+      </p>
+    </div>
+  `).join('');
+}
+
+// INITIALIZE - 
+updateFilters();
+document.getElementById('countryFilter').addEventListener('change', filterData);
+document.getElementById('fieldFilter').addEventListener('change', filterData);
+document.getElementById('yearFilter').addEventListener('change', filterData);
+filterData();
+
+
+    // ATLAS-SPECIFIC FUNCTIONS (same logic, atlas class names)
+    function updateFilters() {
+      const countryFilter = document.getElementById('countryFilter');
+      const fieldFilter = document.getElementById('fieldFilter');
+      const yearFilter = document.getElementById('yearFilter');
+      
+      const countries = [...new Set(diplomacyData.map(d => d.country_pair))].sort();
+      const fields = [...new Set(diplomacyData.map(d => d.field))].sort();
+      const years = [...new Set(diplomacyData.map(d => d.year))].sort((a,b)=>b-a);
+      
+      countryFilter.innerHTML = '<option value="">All</option>' + 
+        countries.map(c => `<option value="${c}">${c}</option>`).join('');
+        
+      fieldFilter.innerHTML = '<option value="">All</option>' + 
+        fields.map(f => `<option value="${f}">${f}</option>`).join('');
+        
+      yearFilter.innerHTML = '<option value="">All</option>' + 
+        years.map(y => `<option value="${y}">${y}</option>`).join('');
+    }
+
+    function filterData() {
+      const countryFilter = document.getElementById('countryFilter').value;
+      const fieldFilter = document.getElementById('fieldFilter').value;
+      const yearFilter = document.getElementById('yearFilter').value;
+      
+      const filtered = diplomacyData.filter(item => {
+        return (!countryFilter || item.country_pair === countryFilter) &&
+               (!fieldFilter || item.field === fieldFilter) &&
+               (!yearFilter || item.year == yearFilter);
+      });
+      
+      displayResults(filtered);
+    }
+
+    function displayResults(data) {
+      const resultsDiv = document.getElementById('results');
+      
+      if (data.length === 0) {
+        resultsDiv.innerHTML = '<div class="atlas-card"><p>No collaborations match these filters. Try different options!</p></div>';
+        return;
+      }
+      
+      resultsDiv.innerHTML = data.map(item => `
+        <div class="atlas-card">
+          <h3>${item.title}</h3>
+          <div class="atlas-meta">
+            <span class="field">${item.field}</span>
+            <span class="type">${item.type.toUpperCase()} • ${item.year}</span>
+            <span>${item.country_pair}</span>
+          </div>
+          <p class="atlas-note">${item.note}</p>
+          <p class="atlas-source">
+            <a href="${item.source}" target="_blank">Source ↗</a>
+          </p>
+        </div>
+      `).join('');
+    }
+
+    // INITIALIZE
+    updateFilters();
+    document.getElementById('countryFilter').addEventListener('change', filterData);
+    document.getElementById('fieldFilter').addEventListener('change', filterData);
+    document.getElementById('yearFilter').addEventListener('change', filterData);
+    filterData();
+
+    // YEAR FOOTER
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- ATLAS-SPECIFIC CSS (add to your assets/style.css) -->
+  <style>
+    .atlas-filters { display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin: 2rem 0; flex-wrap: wrap; }
+    .atlas-filters label { font-weight: 600; color: inherit; white-space: nowrap; margin-right: 0.5rem; }
+    .atlas-filters select { padding: 0.75rem 1rem; border: 1px solid #d1d5db; border-radius: 0.5rem; font-family: inherit; background: white; min-width: 140px; }
+    .atlas-results { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+    .atlas-card { background: white; border-radius: 0.75rem; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.2s; border-left: 4px solid #3b82f6; }
+    .atlas-card:hover { transform: translateY(-4px); }
+    .atlas-card h3 { font-size: 1.25rem; font-weight: 600; color: #1e293b; margin-bottom: 0.75rem; }
+    .atlas-meta { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem; font-size: 0.875rem; }
+    .atlas-meta span { background: #eff6ff; color: #1e40af; padding: 0.25rem 0.5rem; border-radius: 9999px; font-weight: 500; }
+    .atlas-note { color: #475569; margin-bottom: 1rem; }
+    .atlas-source a { color: #3b82f6; text-decoration: none; font-weight: 500; }
+    @media (max-width: 768px) { .atlas-filters { flex-direction: column; } .atlas-results { grid-template-columns: 1fr; } }
+  </style>
 </body>
 </html>
