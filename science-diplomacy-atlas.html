@@ -28,23 +28,23 @@
     </header>
 
     <!-- ATLAS FILTERS -->
-    <div class="atlas-filters">
-      <label>Country Pair:</label>
-      <select id="countryFilter">
-        <option value="">All</option>
-      </select>
+<div class="atlas-filters">
+  <label>Country Pair:</label>
+  <select id="countryFilter"><option value="">All</option></select>
 
-      <label>Field:</label>
-      <select id="fieldFilter">
-        <option value="">All</option>
-      </select>
+  <label>Field:</label>
+  <select id="fieldFilter"><option value="">All</option></select>
 
-      <label>Year:</label>
-      <select id="yearFilter">
-        <option value="">All</option>
-      </select>
-    </div>
+  <label>Type:</label>
+  <select id="typeFilter">
+    <option value="">All</option>
+  </select>
 
+  <label>Year:</label>
+  <select id="yearFilter"><option value="">All</option></select>
+</div>
+
+    
     <!-- ATLAS RESULTS -->
     <div id="results" class="atlas-results">
       <!-- Cards will appear here -->
@@ -220,10 +220,13 @@ function updateFilters() {
   const countryFilter = document.getElementById('countryFilter');
   const fieldFilter = document.getElementById('fieldFilter');
   const yearFilter = document.getElementById('yearFilter');
-  
+  const yearFilter = document.getElementById('yearFilter');
+
   const countries = [...new Set(diplomacyData.map(d => d.country_pair))].sort();
   const fields = [...new Set(diplomacyData.map(d => d.field))].sort();
   const years = [...new Set(diplomacyData.map(d => d.year))].sort((a,b)=>b-a);
+  const years = [...new Set(diplomacyData.map(d => d.year))].sort((a,b)=>b-a);
+
   
   countryFilter.innerHTML = '<option value="">All</option>' + 
     countries.map(c => `<option value="${c}">${c}</option>`).join('');
@@ -233,16 +236,22 @@ function updateFilters() {
     
   yearFilter.innerHTML = '<option value="">All</option>' + 
     years.map(y => `<option value="${y}">${y}</option>`).join('');
+
+  typeFilter.innerHTML = '<option value="">All</option>' + 
+    types.map(t => `<option value="${t}">${t}</option>`).join(''); 
 }
 
 function filterData() {
   const countryFilter = document.getElementById('countryFilter').value;
   const fieldFilter = document.getElementById('fieldFilter').value;
+  const typeFilter = document.getElementById('typeFilter').value;  // NEW
   const yearFilter = document.getElementById('yearFilter').value;
+  
   
   const filtered = diplomacyData.filter(item => {
     return (!countryFilter || item.country_pair === countryFilter) &&
            (!fieldFilter || item.field === fieldFilter) &&
+           (!typeFilter || item.type === typeFilter)    
            (!yearFilter || item.year == yearFilter);
   });
   
@@ -262,7 +271,8 @@ function displayResults(data) {
       <h3>${item.title}</h3>
       <div class="atlas-meta">
         <span class="field">${item.field}</span>
-        <span class="type">${item.type.toUpperCase()} • ${item.year}</span>
+        <span class="type">${item.type}</span>
+        <span class="year">${item.year}</span>
         <span class="country">${item.country_pair}</span>
       </div>
       <p class="atlas-note">${item.note}</p>
@@ -344,6 +354,8 @@ filterData();
     document.getElementById('countryFilter').addEventListener('change', filterData);
     document.getElementById('fieldFilter').addEventListener('change', filterData);
     document.getElementById('yearFilter').addEventListener('change', filterData);
+    document.getElementById('typeFilter').addEventListener('change', filterData);
+
     filterData();
 
     // YEAR FOOTER
@@ -419,6 +431,7 @@ filterData();
   }
   
   /* SPECIFICITY FIXED - Order matters! */
+ /* 4 COLOR-CODED TAGS */
   .atlas-meta span.type {
     background: linear-gradient(135deg, #d1fae5, #a7f3d0) !important; 
     color: #065f46 !important; 
@@ -444,6 +457,16 @@ filterData();
     border-radius: 9999px !important; 
     font-weight: 500 !important; 
     border: 1px solid #93c5fd !important;
+  }
+  
+  /* NEW: YEAR TAG - Purple */
+  .atlas-meta span.year {
+    background: linear-gradient(135deg, #f3e8ff, #e9d5ff) !important; 
+    color: #6b21a8 !important; 
+    padding: 0.375rem 0.75rem !important; 
+    border-radius: 9999px !important; 
+    font-weight: 500 !important; 
+    border: 1px solid #c084fc !important;
   }
   
   .atlas-note { 
