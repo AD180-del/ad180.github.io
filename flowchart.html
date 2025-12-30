@@ -1,0 +1,72 @@
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "default"
+  });
+</script>
+
+<div class="mermaid">
+flowchart TD
+
+    %% ============================
+    %% NODE DEFINITIONS
+    %% ============================
+
+    CHINA["China<br/>Digital Belt & Road<br/>EO diplomacy"]
+    EO["EO Infrastructure Export<br/>Satellites • Ground Stations • Data Platforms"]
+    EU["European Scientific Institutions<br/>Space Agencies • Research Centres"]
+    AUTH["Scientific Authority & Epistemic Power<br/>Control of Data • Standards • Interpretation"]
+    DEP["Path Dependence on Chinese EO<br/>Technical Lock‑in • Standards Influence"]
+
+    TAIWAN["Taiwan<br/>Digital Resilience • AI Governance • Cross‑Strait Geopolitics"]
+    RESIST["Lessons on Resisting Digital Dependence"]
+    ASEAN["ASEAN<br/>DBAR Partnerships • Dependency Trajectories"]
+    COMP["Comparative Models of Dependency & Alignment"]
+
+    DISINFO["Disinformation & AI‑Generated Imagery<br/>Synthetic EO Images • Verification Challenges"]
+    SOC["Social Media • Polarisation • Identity Politics<br/>Amplification • Trust • Mobilisation"]
+    LENS["Imperialism & Colonialism Lens<br/>Digital Imperialism • Infrastructural Colonialism"]
+
+    CENTRAL["<b>PhD Topic</b><br/>How Chinese DBAR EO Infrastructure Reshapes Scientific Authority<br/>and Creates Path Dependence in Europe"]
+
+    %% ============================
+    %% FLOWS
+    %% ============================
+
+    CHINA --> EO --> EU --> AUTH --> DEP --> CENTRAL
+    TAIWAN --> RESIST --> DISINFO
+    ASEAN --> COMP --> DISINFO
+    DISINFO --> SOC --> LENS --> CENTRAL
+
+    %% ============================
+    %% STYLING (ROUNDED + COLOURS + DARK TEXT)
+    %% ============================
+
+    %% Actors = Blue
+    style CHINA fill:#cfe2ff,stroke:#084298,color:#000000,rx:10,ry:10
+    style EU fill:#cfe2ff,stroke:#084298,color:#000000,rx:10,ry:10
+    style TAIWAN fill:#cfe2ff,stroke:#084298,color:#000000,rx:10,ry:10
+    style ASEAN fill:#cfe2ff,stroke:#084298,color:#000000,rx:10,ry:10
+    style RESIST fill:#cfe2ff,stroke:#084298,color:#000000,rx:10,ry:10
+    style COMP fill:#cfe2ff,stroke:#084298,color:#000000,rx:10,ry:10
+
+    %% Infrastructure = Orange
+    style EO fill:#ffe5cc,stroke:#cc7a00,color:#000000,rx:10,ry:10
+
+    %% Epistemic = Purple
+    style AUTH fill:#e5d5ff,stroke:#6f42c1,color:#000000,rx:10,ry:10
+    style DEP fill:#e5d5ff,stroke:#6f42c1,color:#000000,rx:10,ry:10
+
+    %% Disinformation = Red/Pink
+    style DISINFO fill:#ffd6e0,stroke:#c9184a,color:#000000,rx:10,ry:10
+
+    %% Social dynamics = Green
+    style SOC fill:#d1e7dd,stroke:#0f5132,color:#000000,rx:10,ry:10
+
+    %% Analytical lens = Grey
+    style LENS fill:#e9ecef,stroke:#6c757d,color:#000000,rx:10,ry:10
+
+    %% Central PhD topic = Gold
+    style CENTRAL fill:#fff3cd,stroke:#b8860b,color:#000000,stroke-width:2px,rx:12,ry:12
+</div>
