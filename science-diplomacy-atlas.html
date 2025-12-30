@@ -58,7 +58,7 @@
 
   <!-- COMPLETE ATLAS JAVASCRIPT -->
   <script>
-    // DATASET - Verified Europe ↔ East Asia collaborations
+    // 1. DATASET
 const diplomacyData = [
   {
     country_pair: "EU–Japan",
@@ -215,44 +215,44 @@ const diplomacyData = [
   }
 ];
 
-// FIXED FUNCTIONS 
+// 2. CORE FUNCTIONS 
 function updateFilters() {
   const countryFilter = document.getElementById('countryFilter');
   const fieldFilter = document.getElementById('fieldFilter');
-  const yearFilter = document.getElementById('yearFilter');
+  const typeFilter = document.getElementById('typeFilter');
   const yearFilter = document.getElementById('yearFilter');
 
+  // Extract unique values
   const countries = [...new Set(diplomacyData.map(d => d.country_pair))].sort();
   const fields = [...new Set(diplomacyData.map(d => d.field))].sort();
-  const years = [...new Set(diplomacyData.map(d => d.year))].sort((a,b)=>b-a);
-  const years = [...new Set(diplomacyData.map(d => d.year))].sort((a,b)=>b-a);
+  const types = [...new Set(diplomacyData.map(d => d.type))].sort();
+  const years = [...new Set(diplomacyData.map(d => d.year))].sort((a,b) => b - a);
 
-  
+  // Populate HTML
   countryFilter.innerHTML = '<option value="">All</option>' + 
     countries.map(c => `<option value="${c}">${c}</option>`).join('');
     
   fieldFilter.innerHTML = '<option value="">All</option>' + 
     fields.map(f => `<option value="${f}">${f}</option>`).join('');
+
+  typeFilter.innerHTML = '<option value="">All</option>' + 
+    types.map(t => `<option value="${t}">${t}</option>`).join('');
     
   yearFilter.innerHTML = '<option value="">All</option>' + 
     years.map(y => `<option value="${y}">${y}</option>`).join('');
-
-  typeFilter.innerHTML = '<option value="">All</option>' + 
-    types.map(t => `<option value="${t}">${t}</option>`).join(''); 
 }
 
 function filterData() {
-  const countryFilter = document.getElementById('countryFilter').value;
-  const fieldFilter = document.getElementById('fieldFilter').value;
-  const typeFilter = document.getElementById('typeFilter').value;  // NEW
-  const yearFilter = document.getElementById('yearFilter').value;
-  
+  const countryVal = document.getElementById('countryFilter').value;
+  const fieldVal = document.getElementById('fieldFilter').value;
+  const typeVal = document.getElementById('typeFilter').value;
+  const yearVal = document.getElementById('yearFilter').value;
   
   const filtered = diplomacyData.filter(item => {
-    return (!countryFilter || item.country_pair === countryFilter) &&
-           (!fieldFilter || item.field === fieldFilter) &&
-           (!typeFilter || item.type === typeFilter)    
-           (!yearFilter || item.year == yearFilter);
+    return (!countryVal || item.country_pair === countryVal) &&
+           (!fieldVal || item.field === fieldVal) &&
+           (!typeVal || item.type === typeVal) &&
+           (!yearVal || item.year == yearVal);
   });
   
   displayResults(filtered);
@@ -262,7 +262,7 @@ function displayResults(data) {
   const resultsDiv = document.getElementById('results');
   
   if (data.length === 0) {
-    resultsDiv.innerHTML = '<div class="atlas-card"><p>No collaborations match these filters. Try different options!</p></div>';
+    resultsDiv.innerHTML = '<div class="atlas-card"><p>No collaborations match these filters.</p></div>';
     return;
   }
   
@@ -283,83 +283,20 @@ function displayResults(data) {
   `).join('');
 }
   
-// INITIALIZE - 
+// 3. INITIALIZE
 updateFilters();
+
+// Listeners
 document.getElementById('countryFilter').addEventListener('change', filterData);
 document.getElementById('fieldFilter').addEventListener('change', filterData);
+document.getElementById('typeFilter').addEventListener('change', filterData);
 document.getElementById('yearFilter').addEventListener('change', filterData);
+
+// Initial Render
 filterData();
 
-
-    // ATLAS-SPECIFIC FUNCTIONS (same logic, atlas class names)
-    function updateFilters() {
-      const countryFilter = document.getElementById('countryFilter');
-      const fieldFilter = document.getElementById('fieldFilter');
-      const yearFilter = document.getElementById('yearFilter');
-      
-      const countries = [...new Set(diplomacyData.map(d => d.country_pair))].sort();
-      const fields = [...new Set(diplomacyData.map(d => d.field))].sort();
-      const years = [...new Set(diplomacyData.map(d => d.year))].sort((a,b)=>b-a);
-      
-      countryFilter.innerHTML = '<option value="">All</option>' + 
-        countries.map(c => `<option value="${c}">${c}</option>`).join('');
-        
-      fieldFilter.innerHTML = '<option value="">All</option>' + 
-        fields.map(f => `<option value="${f}">${f}</option>`).join('');
-        
-      yearFilter.innerHTML = '<option value="">All</option>' + 
-        years.map(y => `<option value="${y}">${y}</option>`).join('');
-    }
-
-    function filterData() {
-      const countryFilter = document.getElementById('countryFilter').value;
-      const fieldFilter = document.getElementById('fieldFilter').value;
-      const yearFilter = document.getElementById('yearFilter').value;
-      
-      const filtered = diplomacyData.filter(item => {
-        return (!countryFilter || item.country_pair === countryFilter) &&
-               (!fieldFilter || item.field === fieldFilter) &&
-               (!yearFilter || item.year == yearFilter);
-      });
-      
-      displayResults(filtered);
-    }
-
-    function displayResults(data) {
-      const resultsDiv = document.getElementById('results');
-      
-      if (data.length === 0) {
-        resultsDiv.innerHTML = '<div class="atlas-card"><p>No collaborations match these filters. Try different options!</p></div>';
-        return;
-      }
-      
-      resultsDiv.innerHTML = data.map(item => `
-        <div class="atlas-card">
-          <h3>${item.title}</h3>
-          <div class="atlas-meta">
-            <span class="field">${item.field}</span>
-            <span class="type">${item.type.toUpperCase()} • ${item.year}</span>
-            <span>${item.country_pair}</span>
-          </div>
-          <p class="atlas-note">${item.note}</p>
-          <p class="atlas-source">
-            <a href="${item.source}" target="_blank">Source ↗</a>
-          </p>
-        </div>
-      `).join('');
-    }
-
-    // INITIALIZE
-    updateFilters();
-    document.getElementById('countryFilter').addEventListener('change', filterData);
-    document.getElementById('fieldFilter').addEventListener('change', filterData);
-    document.getElementById('yearFilter').addEventListener('change', filterData);
-    document.getElementById('typeFilter').addEventListener('change', filterData);
-
-    filterData();
-
-    // YEAR FOOTER
-    document.getElementById('year').textContent = new Date().getFullYear();
+// Footer Year
+document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
   <!-- ATLAS-SPECIFIC CSS (add to your assets/style.css) -->
